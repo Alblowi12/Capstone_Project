@@ -3,7 +3,7 @@
 Capstone is final project  fullstack backend course provide by  Udicity, 
 
 ## this  project covering the following Lessons:
-```json5
+```
 1- Coding in Python 3
 2- Relational Database Architecture
 3- Modeling Data Objects with SQLAlchemy
@@ -19,7 +19,7 @@ Capstone is final project  fullstack backend course provide by  Udicity,
 
 ## Hosted on heroku.
 
-```json5
+```
 Link](https://movieagencies.herokuapp.com).
 ```
 
@@ -34,28 +34,32 @@ The API has three users :
 
 1-  Assistant
 
-```json5
---Credentials:
+
+Credentials:
+```
 Email: assistent@agency19.com
 Password: Password!19
 ```
 
-```json5
--- Roles:
+
+Roles:
+```
 a- Get actors
 b- Get movies
 ```
 
 2. Director
 
-```json5
---Credentials:
+
+Credentials:
+```
 Email: director@agency19.com
 Password: Password!19
 ```
 
-```json5
--- Roles:
+
+Roles:
+```
 a- Get actors
 b- Get movies
 c- add actor
@@ -67,14 +71,15 @@ f- delete actor
 
 3. Producer
 
-```json5
---Credentials:
+Credentials:
+```
 Email: producaer@agency19.com
 Password: Password!19
 ```
 
---```json5
--- Roles:
+
+Roles:
+```
 a- Get actors
 b- Get movies
 c- add actor
@@ -96,7 +101,7 @@ Gets all movies
 
 
 
-```json5
+```
 
 "movies": [
         {
@@ -122,7 +127,7 @@ Adds a new movie
 
 
 
-```json5
+```
 {
     "message": "added Successfully",
     "movie": {
@@ -142,7 +147,7 @@ Adds a new movie
 Edit data on a movie in the db.
 
 
-```json5
+```
 {
     "message": "Updated Successfully",
     "movie": {
@@ -161,7 +166,7 @@ Delete a movie
 
 
 
-```json5
+```
 {
     "message": "Deleted Successfully",
     "movie": "Titanic",
@@ -175,7 +180,7 @@ Gets all actors
 
 
 
-```json5
+```
 {
     "actors": [
         {
@@ -208,7 +213,7 @@ Gets all actors
 Adds a new actor 
 
 
-```json5
+```
 {
     "actors": {
         "age": 30,
@@ -229,7 +234,7 @@ Adds a new actor
 Edit actor
 
 
-```json5
+```
 {
     "actor": {
         "age": 73,
@@ -246,9 +251,7 @@ Edit actor
 
 Delete a actor 
 
-Response:
-
-```json5
+```
 {
     "actor": "Robert De Niro",
     "message": "Deleted Successfully",
