@@ -8,7 +8,7 @@ from models import setup_db, movie, actor, init_db
 asnt = os.environ['ASSISTANT_TOKEN']
 dirc = os.environ['DIRECTOR_TOKEN']
 prod = os.environ['PRODUCER_TOKEN']
-unath = {'code': 'unauthorized', 'description': 'Permission  not authorized'}
+unath = {'code': 'unauthorized', 'description': 'Permission not authorized.'}
 
 
 class AppTest(unittest.TestCase):
