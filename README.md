@@ -19,9 +19,9 @@ Capstone is final project  fullstack backend course provide by  Udicity,
 
 ## Hosted on heroku.
 
-```
+
 Link](https://movieagencies.herokuapp.com).
-```
+
 
 ## Dependencies
 
@@ -32,7 +32,7 @@ They can be installed by running `pip3 install -r requirements.txt`.
 
 The API has three users :
 
-1-  Assistant
+Assistant
 
 
 Credentials:
@@ -48,7 +48,7 @@ a- Get actors
 b- Get movies
 ```
 
-2. Director
+Director
 
 
 Credentials:
@@ -69,7 +69,7 @@ f- delete actor
 ```
 
 
-3. Producer
+Producer
 
 Credentials:
 ```
@@ -206,7 +206,8 @@ Gets all actors
         }
     ],
     "success": true
-}```
+}
+```
 
 ### `POST /actors`
 
@@ -225,8 +226,6 @@ Adds a new actor
     "success": true
 }
 ```
-
-
 
 
 ### `PATCH /actors/<int:id>`
@@ -261,16 +260,19 @@ Delete a actor
 
 ## Tests using unitests
 
+```
 To run the tests, run `python3 tests.py`.
-
+```
 ## Test using Postman 
 
 There are two Files :
-
+```
 1- the First one is "Capstone.postman_collection" which you can use it to 
 
 test all Api end points.
 
 PS: Update the Tokens for the folders before start the test
-
+```
+```
 2- The Second file  is "Postman_Test_result" which contain the result of runner test.
+```
