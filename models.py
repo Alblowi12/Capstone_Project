@@ -6,8 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 import json
 
 database_name = "capstone"
-database_path = 'postgres://ypgbozimookkky:ffafc5535389b50429c888ca99959c802e5f5ca2ffe10255ca6ce5eef199438f@ec2-3-87-180-131.compute-1.amazonaws.com:5432/df300nbstbk47k'
-
+database_path = os.environ['DATABASE_URL']
 db = SQLAlchemy()
 
 
@@ -16,6 +15,7 @@ def setup_db(app, database_path=database_path):
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.app = app
     db.init_app(app)
+    app.secret_key = os.getenv('SECRET')
 
 
 def init_db():
@@ -44,7 +44,7 @@ class movie(db.Model):
     year = db.Column(db.String(30), nullable=False)
 
     def __repr__(self):
-        return f'<movie ID:{self.id}, name:{self.title}, Genres:{self.genres},  year:{self.year}>'
+        return json.dumps(self.format())
 
     def insert(self):
         db.session.add(self)
@@ -77,7 +77,7 @@ class actor(db.Model):
                            backref='movies_list', lazy=True)
 
     def __repr__(self):
-        return f'<actor ID:{self.id}, name:{self.name}, age:{self.age}, gender:{self.gender}>'
+        return json.dumps(self.format())
 
     def insert(self):
         db.session.add(self)
@@ -91,7 +91,6 @@ class actor(db.Model):
         db.session.commit()
 
     def format(self):
-        """returns a formatted response of the data in the model"""
         return {
             'id': self.id,
             'name': self.name,

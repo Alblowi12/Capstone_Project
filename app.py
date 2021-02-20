@@ -8,6 +8,7 @@ from models import actor, movie, setup_db, db
 
 def create_app():
     app = Flask(__name__)
+    app.secret_key = os.getenv('SECRET')
     setup_db(app)
     CORS(app)
 

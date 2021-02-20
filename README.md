@@ -22,6 +22,56 @@ Capstone is final project  fullstack backend course provide by  Udicity,
 
 Link](https://movieagencies.herokuapp.com).
 
+# Motivation
+
+This project is motivation for me to test my self how much I have gain knowledge through
+The Nano degree corse, Its good opportunity to see how I can apply what I have been learning so far  in this course 
+
+## Working with the application locally
+Make sure you have [python 3](https://www.python.org/downloads/) or later installed
+
+1. **Clone The Repo**
+    ```bash
+    git clone https://github.com/Haddadmj/FSND_Capstone_Casting_Agency
+    ```
+2. **Set up a virtual environment**:
+    ```bash
+    virtualenv env
+    source env/Scripts/activate # for Windows
+    source env/bin/activate # for MacOs/Linux
+    ```
+3. **Install Dependencies**:
+    ```bash
+    pip install -r requirements.txt # for Windows/Linux
+    pip3 install -r requirements.txt # for MacOs
+    ```
+4. **Export Environment Variables**
+
+    Refer to the `setup.sh` file and export the environment variables for the project.
+
+5. **Create Local Database**:
+
+    Create a local database and export the database URI as an environment variable with the key `DATABASE_URL`.
+
+6. **Run Database Migrations**:
+    ```bash
+    python3 manage.py db init
+    python3 manage.py db migrate
+    python3 manage.py db upgrade
+    ```
+
+7. **Run the Flask Application locally**:
+    ```bash
+    export FLASK_APP=app.py
+    export FLASK_ENV=development
+    flask run
+
+    # if using CMD in Windows
+
+    set FLASK_APP=app.py
+    set FLASK_ENV=development
+    flask run
+    ```
 
 ## Dependencies
 
@@ -261,7 +311,12 @@ Delete a actor
 ## Tests using unitests
 
 ```
-To run the tests, run `python3 tests.py`.
+To run the tests, open cmd, terminal or bush  then go to repository folder , then
+Write the following command:
+
+chmod +x setup.sh
+. ./setup.sh
+python3 tests.py
 ```
 ## Test using Postman 
 

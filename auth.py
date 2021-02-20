@@ -5,9 +5,9 @@ from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
 
-AUTH0_DOMAIN = 'alblowi12.us.auth0.com'
-ALGORITHMS = ['RS256']
-API_AUDIENCE = 'CastingAgency'
+AUTH0_DOMAIN = os.environ['AUTH0_DOMAIN']
+ALGORITHMS = os.environ['ALGORITHMS']
+API_AUDIENCE = os.environ['API_AUDIENCE']
 
 
 # AuthError Exception
@@ -137,7 +137,7 @@ def verify_decode_jwt(token):
         except jwt.JWTClaimsError:
             raise AuthError({
                 'code': 'invalid_claims',
-                'description': 'Incorrect claims. Please check the autdience and issuer.'
+                'description': 'Incorrect claims.'
             }, 401)
         except Exception:
             raise AuthError({
@@ -151,7 +151,6 @@ def verify_decode_jwt(token):
     }, 400)
 
 
-# Defining a function to create a nice Python decorator to easily ensure if auhtoirzation info is present
 # before allowing user to perform any activities.
 def requires_auth(permission=''):
     def requires_auth_decorator(f):

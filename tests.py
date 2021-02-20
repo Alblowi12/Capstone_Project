@@ -5,9 +5,10 @@ from flask_sqlalchemy import SQLAlchemy
 from app import create_app
 from models import setup_db, movie, actor, init_db
 
-asnt = ('eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InNfQUhINGx4UkF5ZGN6VUFUdnZvMyJ9.eyJpc3MiOiJodHRwczovL2FsYmxvd2kxMi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjAyYjAwNWI2MzUwNGMwMDcxZGYwNTI2IiwiYXVkIjoiQ2FzdGluZ0FnZW5jeSIsImlhdCI6MTYxMzc1NzE1MCwiZXhwIjoxNjEzODQzNTUwLCJhenAiOiJzSlRWS09pSXQ1MDZIa3JKaGFRTTYwZHp6R25Ib2xrWCIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZ2V0OmFjdG9ycyIsImdldDptb3ZpZXMiXX0.MZOvOVPThjEfVrXXUCn0_701tI8rnA9OBI902uW-EbYL_27ra8TJcCbdjyNO9TaU8Z4sBB6Z_fLdmv4x-TQ8NeuDW59W4To4aRWAjsTWbboVVdyoUUKycCdKOLxqTZVctQLcmExiengX28gSYJ6QBhDb_6BUaf6ALdr0VGApt6n_r22JcsEN3K_9mkgmGcKeHEdXai8jO7e14J-nVGjBOinf5FWidLDmMjPXEoych43IoRmF5uS6N1mwMM2_aCLFQF_KkdTSyUSmUtdo9CvNAxnSNH2v0Pk4TpftzBXIhGvhOEnNcGLzk76UJT3z4UPAQx9S2rbq_t7Fjvk-oOFrGw')
-dirc = ('eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InNfQUhINGx4UkF5ZGN6VUFUdnZvMyJ9.eyJpc3MiOiJodHRwczovL2FsYmxvd2kxMi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjAyYjAwY2E2MzUwNGMwMDcxZGYwNTNiIiwiYXVkIjoiQ2FzdGluZ0FnZW5jeSIsImlhdCI6MTYxMzc2MTA2MywiZXhwIjoxNjEzODQ3NDYzLCJhenAiOiJzSlRWS09pSXQ1MDZIa3JKaGFRTTYwZHp6R25Ib2xrWCIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOmFjdG9ycyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiXX0.QjGEyBGlHhzUycsM_B-dm4q4pbdwjgUHEmfjW49ihPUcb17Q3Cg6O6-GqPR_zzNhHH9d3JKcHZ1oD54aNv4U2321ugh1HSKvZ5GZP0LE7GBcswViQkDXk0G7eUotOwBeMpRnGPLQt-1gdYWver5zpHoaiAcPMXBMR4XKCTYI4UwBLAIw2csy_xA5LfwPdWdUEDO8vASrAJgvPKFPIkkl14r4TjemGZ-aVPP-SZN9gSahi-INbewcSEFa4VvqJUyLPOxM97CRPZxaH-ZmvGjZVnrQZN51jed2EVE6Pud_BdUrovbxOjJmijefthUhlmpo4U7DFepSSqo_s-P5A4UGGA')
-prod = ('eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InNfQUhINGx4UkF5ZGN6VUFUdnZvMyJ9.eyJpc3MiOiJodHRwczovL2FsYmxvd2kxMi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjAyYjAwZWQyMTQxMGQwMDcxMjdhODgxIiwiYXVkIjoiQ2FzdGluZ0FnZW5jeSIsImlhdCI6MTYxMzc1Nzk0OSwiZXhwIjoxNjEzODQ0MzQ5LCJhenAiOiJzSlRWS09pSXQ1MDZIa3JKaGFRTTYwZHp6R25Ib2xrWCIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOmFjdG9ycyIsImRlbGV0ZTptb3ZpZXMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInBhdGNoOmFjdG9ycyIsInBhdGNoOm1vdmllcyIsInBvc3Q6YWN0b3JzIiwicG9zdDptb3ZpZXMiXX0.ydXW6oXBpyfJU9QgGmdz4exsIIoKH_YVq65Z55A9JO6a8ZQZjfbHk8Hs8s_ypyHpbgM4i587HrUAoh2O0xHBWcXhEZZ4EJUUT_m59DP9pj4npkJ55QHxwmVJ3nTmkn8_i65y3aaCxt0G4gp7AMeOPe2FQ2k7oSXS7fqIiMxK5XHPli0HRwT6euUGRHfuoIjWskwy7UOZc2fOMFlFl-xKoj1Jp57rquW3JYkR7CDzlMtG5ynAbyuVddZ5JRRbrOH6Uxrt8uZ6uUIsocxISat1MGrs1U_lTzxHKvrdUBCJxNX-Ivi020HHleYOvcZHtmEgVJGSHI2R7Dlg-VYDWanZ4g')
+asnt = os.environ['ASSISTANT_TOKEN']
+dirc = os.environ['DIRECTOR_TOKEN']
+prod = os.environ['PRODUCER_TOKEN']
+unath = {'code': 'unauthorized', 'description': 'Permission  not authorized'}
 
 
 class AppTest(unittest.TestCase):
@@ -18,7 +19,8 @@ class AppTest(unittest.TestCase):
         self.app = create_app()
         self.client = self.app.test_client
         self.database_name = "capstone_test"
-        self.database_path = 'postgresql://ypgbozimookkky:ffafc5535389b50429c888ca99959c802e5f5ca2ffe10255ca6ce5eef199438f@ec2-3-87-180-131.compute-1.amazonaws.com:5432/df300nbstbk47k'
+        self.database_path = os.environ['DATABASE_URL']
+        self.app.secret_key = os.getenv('SECRET')
         setup_db(self.app, self.database_path)
 
     def tearDown(self):
@@ -107,8 +109,7 @@ class AppTest(unittest.TestCase):
         self.assertEqual(response.status_code, 401)
         self.assertEqual(data['success'], False)
         self.assertEqual(
-            data['message'], {
-                'code': 'unauthorized', 'description': 'Permission not authorized.'})
+            data['message'], unath)
 
     def test_patch_movie(self):
 
@@ -186,8 +187,7 @@ class AppTest(unittest.TestCase):
         self.assertEqual(response.status_code, 401)
         self.assertEqual(data['success'], False)
         self.assertEqual(
-            data['message'], {
-                'code': 'unauthorized', 'description': 'Permission not authorized.'})
+            data['message'], unath)
 
     # Actors Test
 
@@ -271,8 +271,7 @@ class AppTest(unittest.TestCase):
         self.assertEqual(response.status_code, 401)
         self.assertEqual(data['success'], False)
         self.assertEqual(
-            data['message'], {
-                'code': 'unauthorized', 'description': 'Permission not authorized.'})
+            data['message'], unath)
 
     def test_patch_actor(self):
 
@@ -355,8 +354,7 @@ class AppTest(unittest.TestCase):
         self.assertEqual(response.status_code, 401)
         self.assertEqual(data['success'], False)
         self.assertEqual(
-            data['message'], {
-                'code': 'unauthorized', 'description': 'Permission not authorized.'})
+            data['message'], unath)
 
 
 # Make the tests executable
